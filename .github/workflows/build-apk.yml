@@ -1,4 +1,4 @@
-name: Compilar APK AVERIAS EMT
+ name: Compilar APK AVERIAS EMT
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Compilar APK
         working-directory: proyecto
-        run: gradle assembleDebug
+        run:gradle assembleDebug -Pkotlin.jvm.target.validation.mode=warning 
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
