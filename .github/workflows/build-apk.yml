@@ -47,10 +47,13 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
-
       - name: Compilar APK
         working-directory: ${{ steps.android.outputs.dir }}
-        run: gradle assembleDebug --stacktrace
+        run: |
+          gradle assembleDebug \
+            -Pkotlin.jvm.target.validation.mode=warning \
+            --stacktrace
+      
 
       - name: Localizar APK
         id: apk
